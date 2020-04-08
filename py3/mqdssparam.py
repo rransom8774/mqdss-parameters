@@ -75,10 +75,11 @@ def mqdss_chal1_guessprobs_exact(field, r):
     """
     P = field.sampling_max_preimages()
     b = field.sampling_bits
-    # assume the attacker will guess maximal-prob. challenges
-    pguess = fractions.Fraction(P, 2**b)
-    pfail = 1 - pguess
-    return [(pguess**w)*(pfail**(r-w))*binom(r, w) for w in range(r+1)]
+    # assume the attacker will guess maximal-probability challenges
+    pelem = fractions.Fraction(P, 2**b)
+    # prob. of guessing w specific elements is (pelem**w)*((1-pelem)**(r-w));
+    #   can be done for any of binom(r,w) sets of elements
+    return [(pelem**w)*((1-pelem)**(r-w))*binom(r, w) for w in range(r+1)]
 
 def mqdss_chal1_guessprobs_cumulative(field, r):
     """
