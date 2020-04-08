@@ -2,7 +2,9 @@
 import sys
 import math
 import operator
+import fractions
 import functools
+import itertools
 import collections
 
 class FieldParams(object):
@@ -14,6 +16,14 @@ class FieldParams(object):
         pass
     def __repr__(self):
         return 'F{q=%r, b=%r}' % (q, sampling_bits)
+    def sampling_max_preimages(self):
+        q = self.q
+        b = self.sampling_bits
+        P = (2**b) // q   # NOTE floor division
+        if (2**b) % q != 0:
+            P += 1
+            pass
+        return P
     def log2diverg_vector(self, n):
         # DJB divergence-20180430, Theorem 2.1
         # divergence <= (Pq/(2**b))**n
@@ -21,10 +31,7 @@ class FieldParams(object):
         if self.log2diverg1 == None:
             q = self.q
             b = self.sampling_bits
-            P = (2**b) // q   # NOTE floor division
-            if (2**b) % q != 0:
-                P += 1
-                pass
+            P = self.sampling_max_preimages()
             self.log2diverg1 = math.log1p((P*q - 2**b)/(2**b))/math.log(2)
             pass
         return self.log2diverg1 * n
@@ -58,9 +65,41 @@ def binom(n, w):
                              (n - i for i in range(w)), 1) //
             math.factorial(w))
 
-
-
 # FIXME evaluation, 5-pass, step 1               
+
+def mqdss_chal1_guessprobs_exact(field, r):
+    """
+    rv[w] = maximal probability of guessing exactly w elements of ch_1
+    
+    sampling bias is accounted for
+    """
+    P = field.sampling_max_preimages()
+    b = field.sampling_bits
+    # assume the attacker will guess maximal-prob. challenges
+    pguess = fractions.Fraction(P, 2**b)
+    pfail = 1 - pguess
+    return [(pguess**w)*(pfail**(r-w))*binom(r, w) for w in range(r+1)]
+
+def mqdss_chal1_guessprobs_cumulative(field, r):
+    """
+    rv[w] = maximal probability of guessing at least w elements of ch_1
+    
+    sampling bias is accounted for
+    """
+    rv = list(itertools.repeat(None, r+1))
+    exactprobs = mqdss_chal1_guessprobs_exact(field, r)
+    w = r
+    acc = 0
+    while w >= 0:
+        acc = acc + exactprobs[w]
+        rv[w] = acc
+        w = w - 1
+        pass
+    return rv
+
+def mqdss_chal1_guessprobs_log2cum(field, r):
+    "rv[w] = upper bound on log_2(prob of guessing at least w elems of ch_1)"
+    return list(map(math.log2, mqdss_chal1_guessprobs_cumulative(field, r)))
 
 # FIXME evaluation, 5-pass, step 2               
 
