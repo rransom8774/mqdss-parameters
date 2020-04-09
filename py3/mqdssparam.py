@@ -83,6 +83,13 @@ def pfwdist(n, w, p):
     assert N == binom(n, w)
     return (N, dist)
 
+def pfw_log2probs(n, w, p):
+    N, dist = pfwdist(n, w, p)
+    return [math.log2(pc / N) for (vc, pc) in dist]
+
+def pfw_log2guessprob(n, w, p):
+    return max(pfw_log2probs(n, w, p))
+
 # FIXME evaluation, 5-pass, step 1               
 
 def mqdss_chal1_guessprobs_exact(field, r):
