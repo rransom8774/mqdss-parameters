@@ -70,8 +70,8 @@ def pfwdist(n, w, p):
     distribution of fixed-weight vectors.
     
     FIXME"""   
-    assert p < n
-    assert w < n
+    assert p <= n
+    assert w <= n
     dist = list(itertools.repeat(None, min(w, p) + 1))
     N = 0
     for wp in range(min(w, p) + 1):
@@ -130,12 +130,19 @@ def mqdss5p_chal1_guessprobs_log2cum(field, r):
 # FIXME evaluation, 5-pass, step 2               
 
 def mqdss5p_chal2_guessprob_orig(r, kzguess):
-    assert r > kzguess
+    assert r >= kzguess
     return -(r - kzguess)
+
+def mqdss5p_chal2_guessprobs_orig(r):
+    return [mqdss5p_chal2_guessprob_orig(r, kzg) for kzg in range(r+1)]
 
 def mqdss5p_chal2_guessprob_fw(r0, r1, kzguess):
     r = r0 + r1
     return pfw_log2guessprob(r, r1, kzguess)
+
+def mqdss5p_chal2_guessprobs_fw(r0, r1):
+    r = r0 + r1
+    return [mqdss5p_chal2_guessprob_fw(r0, r1, kzg) for kzg in range(r+1)]
 
 # FIXME evaluation, 5-pass, loop to find KZ loss               
 
