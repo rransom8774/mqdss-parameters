@@ -49,7 +49,7 @@ class ParamSet(object):
 
 # FIXME signature component size sets here               
 
-# FIXME divergence bounds               
+# divergence bounds
 
 def log2diverg_sorting(n, randbits):
     # DJB divergence-20180430, Theorems 3.1, 4.1, 5.1
@@ -58,7 +58,7 @@ def log2diverg_sorting(n, randbits):
     lndiverg = math.fsum(math.log1p(i/(2**b)) for i in range(1, n))
     return lndiverg/math.log(2)
 
-# FIXME combinatorial functions               
+# combinatorial functions
 
 def binom(n, w):
     return (functools.reduce(operator.mul,
@@ -90,7 +90,7 @@ def pfw_log2probs(n, w, p):
 def pfw_log2guessprob(n, w, p):
     return max(pfw_log2probs(n, w, p))
 
-# FIXME evaluation, 5-pass, step 1               
+# evaluation, 5-pass, step 1
 
 def mqdss5p_chal1_guessprobs_exact(field, r):
     """
@@ -127,7 +127,7 @@ def mqdss5p_chal1_guessprobs_log2cum(field, r):
     "rv[w] = upper bound on log_2(prob of guessing at least w elems of ch_1)"
     return list(map(math.log2, mqdss5p_chal1_guessprobs_cumulative(field, r)))
 
-# FIXME evaluation, 5-pass, step 2               
+# evaluation, 5-pass, step 2
 
 def mqdss5p_chal2_guessprob_orig(r, kzguess):
     assert r >= kzguess
@@ -144,7 +144,7 @@ def mqdss5p_chal2_guessprobs_fw(r0, r1):
     r = r0 + r1
     return [mqdss5p_chal2_guessprob_fw(r0, r1, kzg) for kzg in range(r+1)]
 
-# FIXME evaluation, 5-pass, loop to find security level               
+# evaluation, 5-pass, loop to find security level
 
 def mqdss5p_kzseclevel_orig(field, r):
     ch1_lgps = mqdss5p_chal1_guessprobs_log2cum(field, r)
