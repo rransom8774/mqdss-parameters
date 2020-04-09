@@ -144,7 +144,18 @@ def mqdss5p_chal2_guessprobs_fw(r0, r1):
     r = r0 + r1
     return [mqdss5p_chal2_guessprob_fw(r0, r1, kzg) for kzg in range(r+1)]
 
-# FIXME evaluation, 5-pass, loop to find KZ loss               
+# FIXME evaluation, 5-pass, loop to find security level               
+
+def mqdss5p_kzseclevel_orig(field, r):
+    ch1_lgps = mqdss5p_chal1_guessprobs_log2cum(field, r)
+    ch2_lgps = mqdss5p_chal2_guessprobs_orig(r)
+    return max(map(min, ch1_lgps, ch2_lgps))
+
+def mqdss5p_kzseclevel_fw(field, r0, r1):
+    r = r0 + r1
+    ch1_lgps = mqdss5p_chal1_guessprobs_log2cum(field, r)
+    ch2_lgps = mqdss5p_chal2_guessprobs_fw(r0, r1)
+    return max(map(min, ch1_lgps, ch2_lgps))
 
 # FIXME evaluation, 3-pass               
 
