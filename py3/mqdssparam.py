@@ -56,10 +56,8 @@ def binom(n, w):
             math.factorial(w))
 
 def pfwdist(n, w, p):
-    """Computes distribution produced by puncturing the uniform
-    distribution of fixed-weight vectors.
-    
-    FIXME"""   
+    """Computes the distribution produced by puncturing the uniform
+    distribution of fixed-weight vectors."""
     assert p <= n
     assert w <= n
     dist = list(itertools.repeat(None, min(w, p) + 1))
@@ -83,11 +81,9 @@ def pfw_log2guessprob(n, w, p):
 # evaluation, 5-pass, step 1
 
 def mqdss5p_chal1_guessprobs_exact(field, r):
-    """
-    rv[w] = maximal probability of guessing exactly w elements of ch_1
+    """rv[w] = maximal probability of guessing exactly w elements of ch_1
     
-    sampling bias is accounted for
-    """
+    sampling bias is accounted for"""
     P = field.sampling_max_preimages()
     b = field.sampling_bits
     # assume the attacker will guess maximal-probability challenges
@@ -97,11 +93,9 @@ def mqdss5p_chal1_guessprobs_exact(field, r):
     return [(pelem**w)*((1-pelem)**(r-w))*binom(r, w) for w in range(r+1)]
 
 def mqdss5p_chal1_guessprobs_cumulative(field, r):
-    """
-    rv[w] = maximal probability of guessing at least w elements of ch_1
+    """rv[w] = maximal probability of guessing at least w elements of ch_1
     
-    sampling bias is accounted for
-    """
+    sampling bias is accounted for"""
     rv = list(itertools.repeat(None, r+1))
     exactprobs = mqdss5p_chal1_guessprobs_exact(field, r)
     w = r
