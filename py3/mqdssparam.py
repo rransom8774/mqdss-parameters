@@ -133,16 +133,19 @@ def mqdss5p_chal2_guessprobs_fw(r0, r1, randbits=31):
 
 # evaluation, 5-pass, loop to find security level
 
+def l2prob_add_costs(x, y):
+    return -(math.log2((2**(-x)) + (2**(-y))))
+
 def mqdss5p_kzseclevel_orig(field, r):
     ch1_lgps = mqdss5p_chal1_guessprobs_log2cum(field, r)
     ch2_lgps = mqdss5p_chal2_guessprobs_orig(r)
-    return max(map(min, ch1_lgps, ch2_lgps))
+    return max(map(l2prob_add_costs, ch1_lgps, ch2_lgps))
 
 def mqdss5p_kzseclevel_fw(field, r0, r1, randbits=31):
     r = r0 + r1
     ch1_lgps = mqdss5p_chal1_guessprobs_log2cum(field, r)
     ch2_lgps = mqdss5p_chal2_guessprobs_fw(r0, r1, randbits)
-    return max(map(min, ch1_lgps, ch2_lgps))
+    return max(map(l2prob_add_costs, ch1_lgps, ch2_lgps))
 
 # FIXME evaluation, 3-pass               
 
