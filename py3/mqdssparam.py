@@ -37,8 +37,6 @@ class FieldParams(object):
         return self.log2diverg1 * n
     pass
 
-# FIXME signature component size sets here               
-
 # divergence bounds
 
 def log2diverg_sorting(n, randbits):
@@ -148,7 +146,33 @@ def mqdss5p_kzseclevel_fw(field, r0, r1, randbits=31):
 
 # FIXME evaluation, 3-pass               
 
-# FIXME 
+# signature component size sets
+
+MQParams = collections.namedtuple('MQParams', ('field', 'n', 'vectbytes', 'seedbytes'))
+
+mq31c1 = MQParams(FieldParams(31, 16), 48, 30, 16)
+mq31c2 = MQParams(FieldParams(31, 16), 48, 30, 24)
+mq31c3 = MQParams(FieldParams(31, 16), 64, 40, 24)
+mq31c4 = MQParams(FieldParams(31, 16), 64, 40, 32)
+mq31c5 = MQParams(FieldParams(31, 16), 88, 55, 32)
+
+mq32c1 = MQParams(FieldParams(32), 48, 30, 16)
+mq32c2 = MQParams(FieldParams(32), 48, 30, 24)
+mq32c3 = MQParams(FieldParams(32), 64, 40, 24)
+mq32c4 = MQParams(FieldParams(32), 64, 40, 32)
+mq32c5 = MQParams(FieldParams(32), 88, 55, 32)
+
+mq16c1 = MQParams(FieldParams(16), 56, 28, 16)
+mq16c2 = MQParams(FieldParams(16), 56, 28, 24)
+mq16c3 = MQParams(FieldParams(16), 72, 36, 24)
+mq16c4 = MQParams(FieldParams(16), 72, 36, 32)
+mq16c5 = MQParams(FieldParams(16), 96, 48, 32)
+
+# FIXME parameter set optimization for size, 5-pass               
+
+
+
+
 
 # FIXME 
 
