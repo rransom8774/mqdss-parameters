@@ -92,7 +92,7 @@ def pfw_log2guessprob(n, w, p):
 
 # FIXME evaluation, 5-pass, step 1               
 
-def mqdss_chal1_guessprobs_exact(field, r):
+def mqdss5p_chal1_guessprobs_exact(field, r):
     """
     rv[w] = maximal probability of guessing exactly w elements of ch_1
     
@@ -106,7 +106,7 @@ def mqdss_chal1_guessprobs_exact(field, r):
     #   can be done for any of binom(r,w) sets of elements
     return [(pelem**w)*((1-pelem)**(r-w))*binom(r, w) for w in range(r+1)]
 
-def mqdss_chal1_guessprobs_cumulative(field, r):
+def mqdss5p_chal1_guessprobs_cumulative(field, r):
     """
     rv[w] = maximal probability of guessing at least w elements of ch_1
     
@@ -123,11 +123,19 @@ def mqdss_chal1_guessprobs_cumulative(field, r):
         pass
     return rv
 
-def mqdss_chal1_guessprobs_log2cum(field, r):
+def mqdss5p_chal1_guessprobs_log2cum(field, r):
     "rv[w] = upper bound on log_2(prob of guessing at least w elems of ch_1)"
     return list(map(math.log2, mqdss_chal1_guessprobs_cumulative(field, r)))
 
 # FIXME evaluation, 5-pass, step 2               
+
+def mqdss5p_chal2_guessprob_orig(r, kzguess):
+    assert r > kzguess
+    return -(r - kzguess)
+
+def mqdss5p_chal2_guessprob_fw(r0, r1, kzguess):
+    r = r0 + r1
+    return pfw_log2guessprob(r, r1, kzguess)
 
 # FIXME evaluation, 5-pass, loop to find KZ loss               
 
