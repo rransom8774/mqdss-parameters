@@ -65,6 +65,24 @@ def binom(n, w):
                              (n - i for i in range(w)), 1) //
             math.factorial(w))
 
+def pfwdist(n, w, p):
+    """Computes distribution produced by puncturing the uniform
+    distribution of fixed-weight vectors.
+    
+    FIXME"""   
+    assert p < n
+    assert w < n
+    dist = list(itertools.repeat(None, min(w, p) + 1))
+    N = 0
+    for wp in range(min(w, p) + 1):
+        punctcount = binom(p, wp)
+        vectcount = binom(n - p, w - wp)
+        dist[wp] = (vectcount, punctcount)
+        N = N + (vectcount * punctcount)
+        pass
+    assert N == binom(n, w)
+    return (N, dist)
+
 # FIXME evaluation, 5-pass, step 1               
 
 def mqdss_chal1_guessprobs_exact(field, r):
