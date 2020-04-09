@@ -185,6 +185,47 @@ spb80  = SigParams(10, 20)
 
 # FIXME parameter set optimization for size, 5-pass               
 
+def mqdss5p_evaluate_nrounds(mqp, sp, r0, r1):
+    return r0 + r1
+
+def mqdss5p_evaluate_sigsize(mqp, sp, r0, r1):
+    r = r0 + r1
+    rv  =         sp.hashbytes    # R
+    rv +=         sp.hashbytes    # H(initial commitments)
+    # ch_1 computed from preceding hash
+    rv +=         sp.hashbytes    # ch_2  -- FIXME could be preimagebytes?   
+    rv += r0 *   mqp.seedbytes    # rho_0      for each round with ch_2=0
+    rv += r1 * 2*mqp.vectbytes    # (t_1, e_1) for each round with ch_2=1
+    rv += r1 *   mqp.vectbytes    # r_1        for each round with ch_2=1
+    rv += r  *    sp.hashbytes    # c_(1-b)    for each round   (b=ch_2)
+    return rv
+
+def mqdss5p_minimize(mqp, sp, ev, r0set, r1set):
+    mqpf = mqp.field
+    minsec = sp.preimagebytes * 8
+    results = list()
+    for r0 in r0set:
+        for r1 in r1set:
+            seclevel = None
+            try:
+                seclevel = -mqdss5p_kzseclevel_fw(mqpf, r0, r1)
+                pass
+            except:
+                print('error calculating security of r0=%r, r1=%r' % (r0, r1))
+                pass
+            if seclevel == None or seclevel < minsec:
+                continue
+            try:
+                results.append((ev(mqp, sp, r0, r1), r0, r1))
+                pass
+            except:
+                print('error evaluating at r0=%r, r1=%r' % (r0, r1))
+                pass
+            pass
+        pass
+    results.sort()
+    return results[0:10]
+
 
 
 

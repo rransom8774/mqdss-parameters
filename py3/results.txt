@@ -1,0 +1,7 @@
+
+>>> mqdssparam.mqdss5p_minimize(mqdssparam.mq31c1, mqdssparam.spc1, mqdssparam.mqdss5p_evaluate_sigsize, range(80, 130), range(20, 92))
+
+[(14880, 125, 72), (14884, 120, 74), (14902, 128, 71), (14906, 123, 73), (14910, 118, 75), (14928, 126, 72), (14932, 121, 74), (14936, 116, 76), (14950, 129, 71), (14954, 124, 73)]
+
+
+
