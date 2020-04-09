@@ -171,13 +171,17 @@ mq16c3 = MQParams(FieldParams(16), 72, 36, 24)
 mq16c4 = MQParams(FieldParams(16), 72, 36, 32)
 mq16c5 = MQParams(FieldParams(16), 96, 48, 32)
 
-SigParams = collections.namedtuple('SigParams', ('seedbytes', 'hashbytes'))
+SigParams = collections.namedtuple('SigParams', ('preimagebytes', 'hashbytes'))
 
 spc1 = SigParams(16, 32)
 spc2 = SigParams(24, 32)
 spc3 = SigParams(24, 48)
 spc4 = SigParams(32, 48)
 spc5 = SigParams(32, 64)
+
+spb112 = SigParams(14, 28)
+spb96 = SigParams(12, 24)
+spb80 = SigParams(10, 20)
 
 # FIXME parameter set optimization for size, 5-pass               
 
