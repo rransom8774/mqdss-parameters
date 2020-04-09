@@ -113,7 +113,7 @@ def mqdss5p_chal1_guessprobs_cumulative(field, r):
     sampling bias is accounted for
     """
     rv = list(itertools.repeat(None, r+1))
-    exactprobs = mqdss_chal1_guessprobs_exact(field, r)
+    exactprobs = mqdss5p_chal1_guessprobs_exact(field, r)
     w = r
     acc = 0
     while w >= 0:
@@ -125,7 +125,7 @@ def mqdss5p_chal1_guessprobs_cumulative(field, r):
 
 def mqdss5p_chal1_guessprobs_log2cum(field, r):
     "rv[w] = upper bound on log_2(prob of guessing at least w elems of ch_1)"
-    return list(map(math.log2, mqdss_chal1_guessprobs_cumulative(field, r)))
+    return list(map(math.log2, mqdss5p_chal1_guessprobs_cumulative(field, r)))
 
 # FIXME evaluation, 5-pass, step 2               
 
