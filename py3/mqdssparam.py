@@ -37,16 +37,6 @@ class FieldParams(object):
         return self.log2diverg1 * n
     pass
 
-class ParamSet(object):
-    __slots__ = ('field', 'r')
-    def __init__(self, field, r):
-        self.field = field
-        self.r = r
-        pass
-    
-    
-    pass
-
 # FIXME signature component size sets here               
 
 # divergence bounds
