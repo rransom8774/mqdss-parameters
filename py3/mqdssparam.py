@@ -180,8 +180,8 @@ spc4 = SigParams(32, 48)
 spc5 = SigParams(32, 64)
 
 spb112 = SigParams(14, 28)
-spb96 = SigParams(12, 24)
-spb80 = SigParams(10, 20)
+spb96  = SigParams(12, 24)
+spb80  = SigParams(10, 20)
 
 # FIXME parameter set optimization for size, 5-pass               
 
