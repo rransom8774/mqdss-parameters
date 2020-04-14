@@ -155,13 +155,13 @@ def l2prob_add_costs(lpx, lpy):
 def mqdss5p_kzseclevel_orig(field, r):
     ch1_lgps = mqdss5p_chal1_guessprobs_log2cum(field, r)
     ch2_lgps = mqdss5p_chal2_guessprobs_orig(r)
-    return max(map(l2prob_add_costs, ch1_lgps, ch2_lgps))
+    return -max(map(l2prob_add_costs, ch1_lgps, ch2_lgps))
 
 def mqdss5p_kzseclevel_fw(field, r0, r1, randbits=31):
     r = r0 + r1
     ch1_lgps = mqdss5p_chal1_guessprobs_log2cum(field, r)
     ch2_lgps = mqdss5p_chal2_guessprobs_fw(r0, r1, randbits)
-    return max(map(l2prob_add_costs, ch1_lgps, ch2_lgps))
+    return -max(map(l2prob_add_costs, ch1_lgps, ch2_lgps))
 
 # FIXME evaluation, 3-pass               
 
@@ -224,7 +224,7 @@ def mqdss5p_minimize(mqp, sp, ev, r0set, r1set):
         for r1 in r1set:
             seclevel = None
             try:
-                seclevel = -mqdss5p_kzseclevel_fw(mqpf, r0, r1)
+                seclevel = mqdss5p_kzseclevel_fw(mqpf, r0, r1)
                 pass
             except:
                 print('error calculating security of r0=%r, r1=%r' % (r0, r1))
