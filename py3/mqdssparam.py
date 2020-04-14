@@ -76,7 +76,7 @@ def pfwdist(n, w, p):
 
 def pfw_log2probs(n, w, p):
     N, dist = pfwdist(n, w, p)
-    return [math.log2(pc / N) for (vc, pc) in dist]
+    return [log2(fractions.Fraction(pc, N)) for (vc, pc) in dist]
 
 def pfw_log2guessprob(n, w, p):
     return max(pfw_log2probs(n, w, p))
