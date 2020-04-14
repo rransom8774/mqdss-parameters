@@ -7,6 +7,11 @@ import functools
 import itertools
 import collections
 
+def log2(x):
+    if isinstance(x, fractions.Fraction):
+        return math.log2(x.numerator) - math.log2(x.denominator)
+    return math.log2(x)
+
 class FieldParams(object):
     __slots__ = ('q', 'sampling_bits', 'log2diverg1')
     def __init__(self, q, sampling_bits=None):
@@ -107,7 +112,7 @@ def mqdss5p_chal1_guessprobs_cumulative(field, r):
 
 def mqdss5p_chal1_guessprobs_log2cum(field, r):
     "rv[w] = upper bound on log_2(prob of guessing at least w elems of ch_1)"
-    return list(map(math.log2, mqdss5p_chal1_guessprobs_cumulative(field, r)))
+    return list(map(log2, mqdss5p_chal1_guessprobs_cumulative(field, r)))
 
 # evaluation, 5-pass, step 2
 
