@@ -133,8 +133,19 @@ def mqdss5p_chal2_guessprobs_fw(r0, r1, randbits=31):
 
 # evaluation, 5-pass, loop to find security level
 
-def l2prob_add_costs(x, y):
-    return -(math.log2((2**(-x)) + (2**(-y))))
+def l2prob_add_costs(lpx, lpy):
+    if abs(lpx - lpy) >= 64:
+        return min(lpx, lpy)
+    lwx = -lpx
+    lwy = -lpy
+    l2scale = min(lwx, lwy)
+    slwx = lwx - l2scale
+    slwy = lwy - l2scale
+    swtotal = 2**(slwx) + 2**(slwy)
+    slwtotal = math.log2(swtotal)
+    lwtotal = slwtotal + l2scale
+    lptotal = -lwtotal
+    return lptotal
 
 def mqdss5p_kzseclevel_orig(field, r):
     ch1_lgps = mqdss5p_chal1_guessprobs_log2cum(field, r)
