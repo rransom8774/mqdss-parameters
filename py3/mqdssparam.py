@@ -216,6 +216,48 @@ def mqdss5p_evaluate_sigsize(mqp, sp, r0, r1):
     rv += r  *    sp.hashbytes    # c_(1-b)    for each round   (b=ch_2)
     return rv
 
+def mqdss5p_minimize_sigsize_fixedr(mqp, sp, r):
+    mqpf = mqp.field
+    minsec = sp.preimagebytes * 8
+    # maximum security level is achieved at r1=r//2, r0=r-r1
+    # signature size decreases as r1 decreases
+    # when r1 <= r/2, security level decreases as r1 decreases
+    # find minimum r1 such that security level >= minsec
+    r1max = r//2
+    r1min = 1
+    r1 = r1max
+    while r1min < r1max:
+        r0 = r - r1
+        seclevel = mqdss5p_kzseclevel_fw(mqpf, r0, r1)
+        if seclevel < minsec:
+            r1min = r1 + 1
+            pass
+        else:
+            r1max = r1
+            pass
+        r1 = (r1min + r1max) // 2
+        pass
+    if r1min > r1max:
+        return
+    r1 = r1min
+    r0 = r - r1
+    seclevel = mqdss5p_kzseclevel_fw(mqpf, r0, r1)
+    if seclevel >= minsec:
+        return (mqdss5p_evaluate_sigsize(mqp, sp, r0, r1), r0, r1)
+
+def mqdss5p_minimize_sigsize(mqp, sp, rmin, rmax):
+    mqpf = mqp.field
+    minsec = sp.preimagebytes * 8
+    results = list()
+    for r in range(rmin, rmax + 1):
+        res = mqdss5p_minimize_sigsize_fixedr(mqp, sp, r)
+        if res != None:
+            results.append(res)
+            pass
+        pass
+    results.sort()
+    return results[0:10]
+
 def mqdss5p_minimize(mqp, sp, ev, r0set, r1set):
     mqpf = mqp.field
     minsec = sp.preimagebytes * 8
