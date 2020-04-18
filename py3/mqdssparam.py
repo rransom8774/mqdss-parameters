@@ -199,7 +199,7 @@ spb112 = SigParams(14, 28)
 spb96  = SigParams(12, 24)
 spb80  = SigParams(10, 20)
 
-# FIXME parameter set optimization for size, 5-pass               
+# parameter set optimization for size, 5-pass
 
 def mqdss5p_evaluate_sigsize(mqp, sp, r0, r1):
     r = r0 + r1
@@ -242,15 +242,27 @@ def mqdss5p_minimize_sigsize_fixedr(mqp, sp, r):
     if seclevel >= minsec:
         return (mqdss5p_evaluate_sigsize(mqp, sp, r0, r1), r0, r1)
 
-def mqdss5p_minimize_sigsize(mqp, sp, rmin, rmax):
+def mqdss5p_minimize_sigsize(mqp, sp, rmin=None, rmax=None):
     mqpf = mqp.field
     minsec = sp.preimagebytes * 8
     results = list()
-    for r in range(rmin, rmax + 1):
+    minsize = None
+    if rmin == None:
+        # cannot possibly use less than b rounds for b-bit security
+        rmin = minsec
+        pass
+    r = rmin
+    while ((rmax == None or r <= rmax) and
+           (minsize == None or
+            minsize >= mqdss5p_evaluate_sigsize(mqp, sp, r-1, 1))):
         res = mqdss5p_minimize_sigsize_fixedr(mqp, sp, r)
         if res != None:
+            if minsize == None or minsize > res[0]:
+                minsize = res[0]
+                pass
             results.append(res)
             pass
+        r = r + 1
         pass
     results.sort()
     return results[0:10]
