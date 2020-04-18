@@ -201,9 +201,6 @@ spb80  = SigParams(10, 20)
 
 # FIXME parameter set optimization for size, 5-pass               
 
-def mqdss5p_evaluate_nrounds(mqp, sp, r0, r1):
-    return r0 + r1
-
 def mqdss5p_evaluate_sigsize(mqp, sp, r0, r1):
     r = r0 + r1
     rv  =         sp.hashbytes    # R
@@ -253,32 +250,6 @@ def mqdss5p_minimize_sigsize(mqp, sp, rmin, rmax):
         res = mqdss5p_minimize_sigsize_fixedr(mqp, sp, r)
         if res != None:
             results.append(res)
-            pass
-        pass
-    results.sort()
-    return results[0:10]
-
-def mqdss5p_minimize(mqp, sp, ev, r0set, r1set):
-    mqpf = mqp.field
-    minsec = sp.preimagebytes * 8
-    results = list()
-    for r0 in r0set:
-        for r1 in r1set:
-            seclevel = None
-            try:
-                seclevel = mqdss5p_kzseclevel_fw(mqpf, r0, r1)
-                pass
-            except:
-                print('error calculating security of r0=%r, r1=%r' % (r0, r1))
-                pass
-            if seclevel == None or seclevel < minsec:
-                continue
-            try:
-                results.append((ev(mqp, sp, r0, r1), r0, r1))
-                pass
-            except:
-                print('error evaluating at r0=%r, r1=%r' % (r0, r1))
-                pass
             pass
         pass
     results.sort()
