@@ -9,36 +9,44 @@
 >>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq31c1, mqdssparam.spc1)
 [(14876, 130, 70), (14880, 125, 72), (14884, 120, 74), (14898, 133, 69), (14902, 128, 71), (14906, 123, 73), (14910, 118, 75), (14924, 131, 70), (14928, 126, 72), (14932, 121, 74)]
 
->>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq31c1, mqdssparam.spb80, 116, 180)
+>>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq31c1, mqdssparam.spb80)
 [(7774, 89, 41), (7776, 86, 42), (7778, 83, 43), (7780, 80, 44), (7782, 77, 45), (7810, 90, 41), (7812, 87, 42), (7814, 84, 43), (7816, 81, 44), (7818, 78, 45)]
 
->>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq31c1, mqdssparam.spb96, 110, 240)
+>>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq31c1, mqdssparam.spb96)
 [(9954, 96, 53), (9960, 99, 52), (9966, 102, 51), (9972, 105, 50), (9982, 91, 55), (9988, 94, 54), (9994, 97, 53), (10000, 100, 52), (10006, 103, 51), (10012, 106, 50)]
 
->>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq31c1, mqdssparam.spb112, 110, 240)
+>>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq31c1, mqdssparam.spb112)
 [(12314, 109, 63), (12326, 120, 59), (12328, 112, 62), (12342, 115, 61), (12344, 107, 64), (12356, 118, 60), (12358, 110, 63), (12370, 121, 59), (12372, 113, 62), (12374, 105, 65)]
 
 
->>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq31c3, mqdssparam.spc3, 100, 600)
+>>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq31c2, mqdssparam.spc2)
+[(23764, 183, 110), (23774, 181, 111), (23784, 179, 112), (23794, 177, 113), (23804, 175, 114), (23810, 186, 109), (23814, 173, 115), (23820, 184, 110), (23824, 171, 116), (23834, 169, 117)]
+
+
+>>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq31c3, mqdssparam.spc3)
 [(31800, 183, 110), (31824, 181, 111), (31848, 179, 112), (31848, 186, 109), (31872, 177, 113), (31872, 184, 110), (31872, 191, 107), (31896, 175, 114), (31896, 189, 108), (31896, 196, 105)]
 
 
 
 
->>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq32c1, mqdssparam.spc1, 80, 300)
+>>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq32c1, mqdssparam.spc1)
 [(14806, 126, 71), (14828, 129, 70), (14832, 124, 72), (14836, 119, 74), (14850, 132, 69), (14854, 127, 71), (14858, 122, 73), (14862, 117, 75), (14872, 135, 68), (14876, 130, 70)]
 
->>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq32c1, mqdssparam.spb80, 80, 250)
+>>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq32c1, mqdssparam.spb80)
 [(7740, 85, 42), (7742, 82, 43), (7744, 79, 44), (7772, 92, 40), (7774, 89, 41), (7776, 86, 42), (7778, 83, 43), (7780, 80, 44), (7782, 77, 45), (7806, 96, 39)]
 
->>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq32c1, mqdssparam.spb96, 80, 250)
+>>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq32c1, mqdssparam.spb96)
 [(9908, 92, 54), (9914, 95, 53), (9920, 98, 52), (9926, 101, 51), (9932, 104, 50), (9938, 107, 49), (9942, 90, 55), (9948, 93, 54), (9954, 96, 53), (9960, 99, 52)]
 
->>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq32c1, mqdssparam.spb112, 80, 250)
+>>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq32c1, mqdssparam.spb112)
 [(12268, 116, 60), (12270, 108, 63), (12282, 119, 59), (12284, 111, 62), (12286, 103, 65), (12298, 114, 61), (12300, 106, 64), (12312, 117, 60), (12314, 109, 63), (12326, 120, 59)]
 
 
->>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq32c3, mqdssparam.spc3, 80, 600)
+>>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq32c2, mqdssparam.spc2)
+[(23688, 186, 108), (23692, 173, 114), (23698, 184, 109), (23702, 171, 115), (23708, 182, 110), (23712, 169, 116), (23718, 180, 111), (23728, 178, 112), (23734, 189, 107), (23738, 176, 113)]
+
+
+>>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq32c3, mqdssparam.spc3)
 [(31680, 186, 108), (31704, 184, 109), (31728, 182, 110), (31728, 189, 107), (31752, 173, 114), (31752, 180, 111), (31752, 187, 108), (31776, 171, 115), (31776, 178, 112), (31776, 192, 106)]
 
 
