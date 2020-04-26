@@ -203,18 +203,18 @@ def q2_minimize_r0_fixedr(field, sp, r):
     if seclevel >= minsec:
         return r0
 
-def q2_minimize_sigsize(keyp, sp, evaluate_sigsize):
-    field = keyp.field
+def q2_minimize_sigsize(kp, sp, fp, evaluate_sigsize):
+    field = kp.field
     minsec = sp.preimagebytes * 8
     results = list()
     minsize = None
     r = minsec   # cannot possibly use less than b rounds for b-bit security
     while (minsize == None or
-           minsize >= evaluate_sigsize(keyp, sp, r-1, 1)):
-        r0 = q2_minimize_sigsize_fixedr(field, sp, r)
+           minsize >= evaluate_sigsize(kp, sp, fp, r-1, 1)):
+        r0 = q2_minimize_r0_fixedr(field, sp, r)
         if r0 != None:
             r1 = r - r0
-            size = evaluate_sigsize(keyp, sp, r0, r1)
+            size = evaluate_sigsize(kp, sp, fp, r0, r1)
             if minsize == None or minsize > size:
                 minsize = size
                 pass
