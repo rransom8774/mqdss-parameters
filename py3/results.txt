@@ -81,5 +81,91 @@
 
 
 
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp251c1, pqsigparam.common.spc1, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
+[(14422, 122, 55), (14432, 119, 56), (14442, 116, 57), (14460, 126, 54), (14470, 123, 55), (14480, 120, 56), (14490, 117, 57), (14498, 130, 53), (14500, 114, 58), (14508, 127, 54)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp251c1, pqsigparam.common.spc1, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(13758, 116, 57), (13760, 119, 56), (13762, 122, 55), (13802, 111, 59), (13804, 114, 58), (13806, 117, 57), (13808, 120, 56), (13810, 123, 55), (13812, 126, 54), (13846, 106, 61)]
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp251c1, pqsigparam.common.spb80, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
+[(7696, 78, 34), (7698, 82, 33), (7700, 86, 32), (7702, 90, 31), (7730, 75, 35), (7732, 79, 34), (7734, 83, 33), (7736, 87, 32), (7738, 91, 31), (7764, 72, 36)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp251c1, pqsigparam.common.spb80, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(7288, 78, 34), (7302, 82, 33), (7310, 75, 35), (7316, 86, 32), (7324, 79, 34), (7330, 90, 31), (7332, 72, 36), (7338, 83, 33), (7346, 76, 35), (7352, 87, 32)]
+
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp251c2, pqsigparam.common.spc2, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
+[(23014, 170, 87), (23028, 173, 86), (23042, 165, 89), (23042, 176, 85), (23056, 168, 88), (23070, 160, 91), (23070, 171, 87), (23084, 163, 90), (23084, 174, 86), (23098, 166, 89)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp251c2, pqsigparam.common.spc2, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(21970, 170, 87), (21974, 165, 89), (21978, 160, 91), (21996, 173, 86), (22000, 168, 88), (22004, 163, 90), (22008, 158, 92), (22022, 176, 85), (22026, 171, 87), (22030, 166, 89)]
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp251c2, pqsigparam.common.spc1, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
+[(15370, 116, 57), (15384, 119, 56), (15398, 111, 59), (15398, 122, 55), (15412, 114, 58), (15426, 106, 61), (15426, 117, 57), (15440, 109, 60), (15440, 120, 56), (15454, 112, 59)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp251c2, pqsigparam.common.spc1, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(14686, 116, 57), (14690, 111, 59), (14694, 106, 61), (14712, 119, 56), (14716, 114, 58), (14720, 109, 60), (14724, 104, 62), (14738, 122, 55), (14742, 117, 57), (14746, 112, 59)]
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp251c2, pqsigparam.common.spb80, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
+[(8320, 78, 34), (8330, 75, 35), (8340, 72, 36), (8350, 69, 37), (8354, 82, 33), (8364, 79, 34), (8374, 76, 35), (8384, 73, 36), (8388, 86, 32), (8394, 70, 37)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp251c2, pqsigparam.common.spb80, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(7906, 69, 37), (7908, 72, 36), (7910, 75, 35), (7912, 78, 34), (7948, 67, 38), (7950, 70, 37), (7952, 73, 36), (7954, 76, 35), (7956, 79, 34), (7958, 82, 33)]
+
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp509c3, pqsigparam.common.spc3, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
+[(31536, 175, 81), (31552, 172, 82), (31568, 169, 83), (31592, 179, 80), (31608, 176, 81), (31624, 173, 82), (31632, 186, 78), (31640, 170, 83), (31648, 183, 79), (31656, 167, 84)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp509c3, pqsigparam.common.spc3, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(30157, 169, 83), (30158, 172, 82), (30159, 175, 81), (30226, 161, 86), (30227, 164, 85), (30228, 167, 84), (30229, 170, 83), (30230, 173, 82), (30231, 176, 81), (30232, 179, 80)]
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp509c3, pqsigparam.common.spc1, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
+[(18272, 124, 52), (18280, 128, 51), (18288, 132, 50), (18296, 136, 49), (18312, 117, 54), (18320, 121, 53), (18328, 125, 52), (18336, 129, 51), (18344, 133, 50), (18352, 137, 49)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp509c3, pqsigparam.common.spc1, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(17388, 124, 52), (17394, 117, 54), (17413, 128, 51), (17419, 121, 53), (17425, 114, 55), (17438, 132, 50), (17444, 125, 52), (17450, 118, 54), (17456, 111, 56), (17463, 136, 49)]
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp509c3, pqsigparam.common.spb80, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
+[(10036, 83, 31), (10052, 88, 30), (10068, 93, 29), (10080, 84, 31), (10096, 89, 30), (10108, 80, 32), (10112, 94, 29), (10124, 85, 31), (10136, 76, 33), (10140, 90, 30)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp509c3, pqsigparam.common.spb80, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(9509, 83, 31), (9542, 88, 30), (9553, 84, 31), (9564, 80, 32), (9575, 76, 33), (9575, 93, 29), (9586, 89, 30), (9597, 85, 31), (9608, 81, 32), (9619, 77, 33)]
+
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp509c4, pqsigparam.common.spc4, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
+[(43888, 222, 112), (43896, 225, 111), (43904, 228, 110), (43912, 231, 109), (43920, 234, 108), (43928, 237, 107), (43952, 217, 114), (43960, 220, 113), (43968, 223, 112), (43976, 226, 111)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp509c4, pqsigparam.common.spc4, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(41984, 222, 112), (42009, 225, 111), (42014, 217, 114), (42034, 228, 110), (42039, 220, 113), (42044, 212, 116), (42059, 231, 109), (42064, 223, 112), (42069, 215, 115), (42074, 207, 118)]
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp509c4, pqsigparam.common.spc3, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
+[(32920, 169, 83), (32928, 172, 82), (32936, 175, 81), (32976, 161, 86), (32984, 164, 85), (32992, 167, 84), (33000, 170, 83), (33008, 173, 82), (33016, 176, 81), (33024, 179, 80)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp509c4, pqsigparam.common.spc3, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(31509, 169, 83), (31514, 161, 86), (31534, 172, 82), (31539, 164, 85), (31559, 175, 81), (31564, 167, 84), (31569, 159, 87), (31589, 170, 83), (31594, 162, 86), (31599, 154, 89)]
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp509c4, pqsigparam.common.spc1, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
+[(19248, 117, 54), (19264, 124, 52), (19272, 114, 55), (19288, 121, 53), (19296, 111, 56), (19304, 128, 51), (19312, 118, 54), (19320, 108, 57), (19328, 125, 52), (19336, 115, 55)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp509c4, pqsigparam.common.spc1, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(18330, 117, 54), (18337, 114, 55), (18344, 111, 56), (18351, 108, 57), (18380, 124, 52), (18387, 121, 53), (18394, 118, 54), (18401, 115, 55), (18408, 112, 56), (18415, 109, 57)]
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp509c4, pqsigparam.common.spb80, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
+[(10700, 83, 31), (10744, 76, 33), (10748, 80, 32), (10752, 84, 31), (10756, 88, 30), (10792, 73, 34), (10796, 77, 33), (10800, 81, 32), (10804, 85, 31), (10808, 89, 30)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp509c4, pqsigparam.common.spb80, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(10173, 83, 31), (10183, 76, 33), (10204, 80, 32), (10214, 73, 34), (10225, 84, 31), (10235, 77, 33), (10245, 70, 35), (10246, 88, 30), (10256, 81, 32), (10266, 74, 34)]
+
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp4093c5, pqsigparam.common.spc5, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
+[(53476, 229, 100), (53501, 226, 101), (53522, 236, 98), (53526, 223, 102), (53547, 233, 99), (53551, 220, 103), (53572, 230, 100), (53576, 217, 104), (53593, 240, 97), (53597, 227, 101)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp4093c5, pqsigparam.common.spc5, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(51576, 229, 100), (51582, 226, 101), (51588, 223, 102), (51594, 220, 103), (51600, 217, 104), (51606, 214, 105), (51612, 211, 106), (51660, 236, 98), (51666, 233, 99), (51672, 230, 100)]
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp4093c5, pqsigparam.common.spc3, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
+[(36111, 186, 71), (36122, 175, 74), (36134, 190, 70), (36145, 179, 73), (36168, 183, 72), (36179, 172, 75), (36191, 187, 71), (36202, 176, 74), (36214, 191, 70), (36225, 180, 73)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp4093c5, pqsigparam.common.spc3, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(34716, 175, 74), (34754, 172, 75), (34758, 179, 73), (34762, 186, 71), (34792, 169, 76), (34796, 176, 74), (34800, 183, 72), (34804, 190, 70), (34830, 166, 77), (34834, 173, 75)]
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp4093c5, pqsigparam.common.spc1, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
+[(21406, 131, 46), (21417, 118, 49), (21431, 127, 47), (21445, 136, 45), (21456, 123, 48), (21470, 132, 46), (21481, 119, 49), (21484, 141, 44), (21495, 128, 47), (21506, 115, 50)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp4093c5, pqsigparam.common.spc1, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(20486, 118, 49), (20532, 131, 46), (20538, 127, 47), (20544, 123, 48), (20550, 119, 49), (20556, 115, 50), (20562, 111, 51), (20590, 136, 45), (20596, 132, 46), (20602, 128, 47)]
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp4093c5, pqsigparam.common.spb80, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
+[(12055, 91, 27), (12064, 86, 28), (12073, 81, 29), (12098, 97, 26), (12107, 92, 27), (12116, 87, 28), (12125, 82, 29), (12134, 77, 30), (12150, 98, 26), (12159, 93, 27)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp4093c5, pqsigparam.common.spb80, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(11522, 81, 29), (11532, 86, 28), (11542, 91, 27), (11564, 77, 30), (11574, 82, 29), (11584, 87, 28), (11594, 92, 27), (11604, 97, 26), (11616, 78, 30), (11626, 83, 29)]
+
+
+
 
 
