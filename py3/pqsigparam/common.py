@@ -130,6 +130,7 @@ def q2_chal1_guessprobs_cumulative(field, r):
         pass
     return rv
 
+@functools.lru_cache(maxsize=16)
 def q2_chal1_guessprobs_log2cum(field, r):
     "rv[w] = upper bound on log_2(prob of guessing at least w elems of ch_1)"
     return list(map(log2, q2_chal1_guessprobs_cumulative(field, r)))
@@ -149,9 +150,11 @@ def q2_chal2_guessprobs_fw(r0, r1, randbits=31):
 
 def q2_seclevel_fw(field, r0, r1, randbits=31):
     r = r0 + r1
-    ch1_lgps = mqdss5p_chal1_guessprobs_log2cum(field, r)
-    ch2_lgps = mqdss5p_chal2_guessprobs_fw(r0, r1, randbits)
-    return -max(map(l2prob_add_costs, ch1_lgps, ch2_lgps))
+    ch1_lgps = q2_chal1_guessprobs_log2cum(field, r)
+    ch2_lgps = q2_chal2_guessprobs_fw(r0, r1, randbits)
+    return min(map(l2costs_add,
+                   map(operator.neg, ch1_lgps),
+                   map(operator.neg, ch2_lgps)))
 
 # generic signature component size sets
 
@@ -166,4 +169,59 @@ spc5 = SigParams(32, 64)
 spb112 = SigParams(14, 28)
 spb96  = SigParams(12, 24)
 spb80  = SigParams(10, 20)
+
+# parameter set optimization for size, 5-pass, utility functions
+
+@functools.lru_cache(maxsize=None)
+def q2_minimize_r0_fixedr(field, sp, r):
+    """Return largest r0 achieving the security level specified by sp, or
+    None if r is too small."""
+    minsec = sp.preimagebytes * 8
+    # maximum security level is achieved at r1=r//2, r0=r-r1
+    # convention from MQDSS: signature size decreases as r1 decreases
+    # when r1 <= r/2, security level decreases as r1 decreases
+    # find minimum r1 such that security level >= minsec
+    r1max = r//2
+    r1min = 1
+    r1 = r1max
+    while r1min < r1max:
+        r0 = r - r1
+        seclevel = q2_seclevel_fw(field, r0, r1)
+        if seclevel < minsec:
+            r1min = r1 + 1
+            pass
+        else:
+            r1max = r1
+            pass
+        r1 = (r1min + r1max) // 2
+        pass
+    if r1min > r1max:
+        return
+    r1 = r1min
+    r0 = r - r1
+    seclevel = q2_seclevel_fw(field, r0, r1)
+    if seclevel >= minsec:
+        return r0
+
+def q2_minimize_sigsize(keyp, sp, evaluate_sigsize):
+    field = keyp.field
+    minsec = sp.preimagebytes * 8
+    results = list()
+    minsize = None
+    r = minsec   # cannot possibly use less than b rounds for b-bit security
+    while (minsize == None or
+           minsize >= evaluate_sigsize(keyp, sp, r-1, 1)):
+        r0 = q2_minimize_sigsize_fixedr(field, sp, r)
+        if r0 != None:
+            r1 = r - r0
+            size = evaluate_sigsize(keyp, sp, r0, r1)
+            if minsize == None or minsize > size:
+                minsize = size
+                pass
+            results.append((size, r0, r1))
+            pass
+        r = r + 1
+        pass
+    results.sort()
+    return results[0:10]
 
