@@ -165,6 +165,18 @@ def mqdss5p_kzseclevel_fw(field, r0, r1, randbits=31):
 
 # FIXME evaluation, 3-pass               
 
+def trinomial(w0, w1, w2):
+    n = w0 + w1 + w2
+    return binom(n, w1+w2) * binom(w1+w2, w2)
+
+def tetranomial(w0, w1, w2, w3):
+    n = w0 + w1 + w2 + w3
+    return binom(n, w1+w2+w3) * binom(w1+w2+w3, w2+w3) * binom(w2+w3, w3)
+
+
+
+
+
 # signature component size sets
 
 MQParams = collections.namedtuple('MQParams', ('field', 'n', 'vectbytes', 'seedbytes'))
