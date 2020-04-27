@@ -102,6 +102,16 @@
 >>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp251c2, pqsigparam.common.spc1, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
 [(14686, 116, 57), (14690, 111, 59), (14694, 106, 61), (14712, 119, 56), (14716, 114, 58), (14720, 109, 60), (14724, 104, 62), (14738, 122, 55), (14742, 117, 57), (14746, 112, 59)]
 
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp251c2, pqsigparam.common.spb112, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
+[(12836, 101, 50), (12842, 104, 49), (12876, 96, 52), (12882, 99, 51), (12888, 102, 50), (12894, 105, 49), (12900, 108, 48), (12922, 94, 53), (12928, 97, 52), (12946, 106, 49)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp251c2, pqsigparam.common.spb112, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(12236, 101, 50), (12252, 96, 52), (12254, 104, 49), (12270, 99, 51), (12286, 94, 53), (12288, 102, 50), (12302, 89, 55), (12304, 97, 52), (12306, 105, 49), (12320, 92, 54)]
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp251c2, pqsigparam.common.spb96, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
+[(10522, 93, 41), (10524, 90, 42), (10526, 87, 43), (10528, 84, 44), (10530, 81, 45), (10568, 97, 40), (10570, 94, 41), (10572, 91, 42), (10574, 88, 43), (10576, 85, 44)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp251c2, pqsigparam.common.spb96, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(9990, 81, 45), (10000, 84, 44), (10010, 87, 43), (10020, 90, 42), (10028, 79, 46), (10030, 93, 41), (10038, 82, 45), (10048, 85, 44), (10058, 88, 43), (10066, 77, 47)]
+
 >>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp251c2, pqsigparam.common.spb80, pqsigparam.pkpdss.fploose, pqsigparam.pkpdss.evaluate_sigsize)
 [(8320, 78, 34), (8330, 75, 35), (8340, 72, 36), (8350, 69, 37), (8354, 82, 33), (8364, 79, 34), (8374, 76, 35), (8384, 73, 36), (8388, 86, 32), (8394, 70, 37)]
 >>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp251c2, pqsigparam.common.spb80, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
