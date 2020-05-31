@@ -20,7 +20,7 @@ class FieldParams(object):
         self.log2diverg1 = None
         pass
     def __repr__(self):
-        return 'F{q=%r, b=%r}' % (q, sampling_bits)
+        return 'F{q=%r, b=%r}' % (self.q, self.sampling_bits)
     def sampling_max_preimages(self):
         q = self.q
         b = self.sampling_bits
