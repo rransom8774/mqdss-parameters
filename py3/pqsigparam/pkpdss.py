@@ -65,6 +65,12 @@ kp509c3 = PKPKeyParams(f509, 94, 54, 24)
 kp509c4 = PKPKeyParams(f509, 94, 54, 32)
 kp4093c5 = PKPKeyParams(f4093, 106, 47, 32)
 
+kp997c1 = PKPKeyParams(f997, 61, 28, 16)
+kp997c2 = PKPKeyParams(f997, 61, 28, 24)
+kp1409c3 = PKPKeyParams(f1409, 87, 42, 24)
+kp1409c4 = PKPKeyParams(f1409, 87, 42, 32)
+kp1889c5 = PKPKeyParams(f1889, 111, 55, 32)
+
 class PKPFormatParams(object):
     def nvect_perm_bytes(self, kp):
         return self.nvect_bytes(kp) + self.perm_bytes(kp)
