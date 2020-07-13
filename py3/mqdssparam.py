@@ -20,7 +20,7 @@ class FieldParams(object):
         self.log2diverg1 = None
         pass
     def __repr__(self):
-        return 'F{q=%r, b=%r}' % (q, sampling_bits)
+        return 'F{q=%r, b=%r}' % (self.q, self.sampling_bits)
     def sampling_max_preimages(self):
         q = self.q
         b = self.sampling_bits
@@ -28,6 +28,11 @@ class FieldParams(object):
         if (2**b) % q != 0:
             P += 1
             pass
+        return P
+    def sampling_min_preimages(self):
+        q = self.q
+        b = self.sampling_bits
+        P = (2**b) // q   # NOTE floor division
         return P
     def log2diverg_vector(self, n):
         # DJB divergence-20180430, Theorem 2.1
@@ -87,13 +92,15 @@ def mqdss5p_chal1_guessprobs_exact(field, r):
     """rv[w] = maximal probability of guessing exactly w elements of ch_1
     
     sampling bias is accounted for"""
-    P = field.sampling_max_preimages()
+    Pmax = field.sampling_max_preimages()
+    Pmin = field.sampling_min_preimages()
     b = field.sampling_bits
     # assume the attacker will guess maximal-probability challenges
-    pelem = fractions.Fraction(P, 2**b)
+    pelemmax = fractions.Fraction(Pmax, 2**b)
+    pelemmin = fractions.Fraction(Pmin, 2**b)
     # prob. of guessing w specific elements is (pelem**w)*((1-pelem)**(r-w));
     #   can be done for any of binom(r,w) sets of elements
-    return [(pelem**w)*((1-pelem)**(r-w))*binom(r, w) for w in range(r+1)]
+    return [(pelemmax**w)*((1-pelemmin)**(r-w))*binom(r, w) for w in range(r+1)]
 
 def mqdss5p_chal1_guessprobs_cumulative(field, r):
     """rv[w] = maximal probability of guessing at least w elements of ch_1
