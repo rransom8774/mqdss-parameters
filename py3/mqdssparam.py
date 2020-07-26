@@ -186,25 +186,25 @@ def tetranomial(w0, w1, w2, w3):
 
 # signature component size sets
 
-MQParams = collections.namedtuple('MQParams', ('field', 'n', 'vectbytes', 'seedbytes'))
+MQParams = collections.namedtuple('MQParams', ('field', 'n', 'vectbytes', 'seedbytes', 'hashbytes'))
 
-mq31c1 = MQParams(FieldParams(31, 16), 48, 30, 16)
-mq31c2 = MQParams(FieldParams(31, 16), 48, 30, 24)
-mq31c3 = MQParams(FieldParams(31, 16), 64, 40, 24)
-mq31c4 = MQParams(FieldParams(31, 16), 64, 40, 32)
-mq31c5 = MQParams(FieldParams(31, 16), 88, 55, 32)
+mq31c1 = MQParams(FieldParams(31, 16), 48, 30, 16, 32)
+mq31c2 = MQParams(FieldParams(31, 16), 48, 30, 24, 32)
+mq31c3 = MQParams(FieldParams(31, 16), 64, 40, 24, 48)
+mq31c4 = MQParams(FieldParams(31, 16), 64, 40, 32, 48)
+mq31c5 = MQParams(FieldParams(31, 16), 88, 55, 32, 64)
 
-mq32c1 = MQParams(FieldParams(32), 48, 30, 16)
-mq32c2 = MQParams(FieldParams(32), 48, 30, 24)
-mq32c3 = MQParams(FieldParams(32), 64, 40, 24)
-mq32c4 = MQParams(FieldParams(32), 64, 40, 32)
-mq32c5 = MQParams(FieldParams(32), 88, 55, 32)
+mq32c1 = MQParams(FieldParams(32), 48, 30, 16, 32)
+mq32c2 = MQParams(FieldParams(32), 48, 30, 24, 32)
+mq32c3 = MQParams(FieldParams(32), 64, 40, 24, 48)
+mq32c4 = MQParams(FieldParams(32), 64, 40, 32, 48)
+mq32c5 = MQParams(FieldParams(32), 88, 55, 32, 64)
 
-mq16c1 = MQParams(FieldParams(16), 56, 28, 16)
-mq16c2 = MQParams(FieldParams(16), 56, 28, 24)
-mq16c3 = MQParams(FieldParams(16), 72, 36, 24)
-mq16c4 = MQParams(FieldParams(16), 72, 36, 32)
-mq16c5 = MQParams(FieldParams(16), 96, 48, 32)
+mq16c1 = MQParams(FieldParams(16), 56, 28, 16, 32)
+mq16c2 = MQParams(FieldParams(16), 56, 28, 24, 32)
+mq16c3 = MQParams(FieldParams(16), 72, 36, 24, 48)
+mq16c4 = MQParams(FieldParams(16), 72, 36, 32, 48)
+mq16c5 = MQParams(FieldParams(16), 96, 48, 32, 64)
 
 SigParams = collections.namedtuple('SigParams', ('preimagebytes', 'hashbytes'))
 
@@ -222,10 +222,10 @@ spb80  = SigParams(10, 20)
 
 def mqdss5p_evaluate_sigsize(mqp, sp, r0, r1):
     r = r0 + r1
-    rv  =         sp.hashbytes    # R
+    rv  =        mqp.hashbytes    # R
     rv +=         sp.hashbytes    # H(initial commitments)
     # ch_1 computed from preceding hash
-    rv +=         sp.hashbytes    # ch_2  -- FIXME could be preimagebytes?   
+    rv +=         sp.hashbytes    # ch_2
     rv += r0 *   mqp.seedbytes    # rho_0      for each round with ch_2=0
     rv += r1 * 2*mqp.vectbytes    # (t_1, e_1) for each round with ch_2=1
     rv += r1 *   mqp.vectbytes    # r_1        for each round with ch_2=1

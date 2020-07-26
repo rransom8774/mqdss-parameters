@@ -57,19 +57,19 @@ def VectorEncode(R, M):
 def vector_encode_bytes(count, mod):
     return len(VectorEncode([0]*count, [mod]*count))
 
-PKPKeyParams = collections.namedtuple('PKPKeyParams', ('field', 'n', 'm', 'seedbytes'))
+PKPKeyParams = collections.namedtuple('PKPKeyParams', ('field', 'n', 'm', 'seedbytes', 'hashbytes'))
 
-kp251c1 = PKPKeyParams(f251, 69, 41, 16)
-kp251c2 = PKPKeyParams(f251, 69, 41, 24)
-kp509c3 = PKPKeyParams(f509, 94, 54, 24)
-kp509c4 = PKPKeyParams(f509, 94, 54, 32)
-kp4093c5 = PKPKeyParams(f4093, 106, 47, 32)
+kp251c1 = PKPKeyParams(f251, 69, 41, 16, 32)
+kp251c2 = PKPKeyParams(f251, 69, 41, 24, 32)
+kp509c3 = PKPKeyParams(f509, 94, 54, 24, 48)
+kp509c4 = PKPKeyParams(f509, 94, 54, 32, 48)
+kp4093c5 = PKPKeyParams(f4093, 106, 47, 32, 64)
 
-kp997c1 = PKPKeyParams(f997, 61, 28, 16)
-kp997c2 = PKPKeyParams(f997, 61, 28, 24)
-kp1409c3 = PKPKeyParams(f1409, 87, 42, 24)
-kp1409c4 = PKPKeyParams(f1409, 87, 42, 32)
-kp1889c5 = PKPKeyParams(f1889, 111, 55, 32)
+kp997c1 = PKPKeyParams(f997, 61, 28, 16, 32)
+kp997c2 = PKPKeyParams(f997, 61, 28, 24, 32)
+kp1409c3 = PKPKeyParams(f1409, 87, 42, 24, 48)
+kp1409c4 = PKPKeyParams(f1409, 87, 42, 32, 48)
+kp1889c5 = PKPKeyParams(f1889, 111, 55, 32, 64)
 
 class PKPFormatParams(object):
     def nvect_perm_bytes(self, kp):
@@ -96,7 +96,7 @@ fptight = PKPFormatParamsTight()
 
 def evaluate_sigsize(kp, sp, fp, r0, r1):
     r = r0 + r1
-    rv  =         sp.hashbytes          # R
+    rv  =         kp.hashbytes          # R
     rv +=         sp.hashbytes          # H(initial commitments)
     # ch_1 computed from preceding hash
     rv +=         sp.hashbytes          # ch_2

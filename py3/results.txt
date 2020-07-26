@@ -4,6 +4,18 @@
 [(14880, 125, 72), (14884, 120, 74), (14902, 128, 71), (14906, 123, 73), (14910, 118, 75), (14928, 126, 72), (14932, 121, 74), (14936, 116, 76), (14950, 129, 71), (14954, 124, 73)]
 
 
+NOTE: While writing an implementation/spec for a signature scheme of
+this type, it became clear that the length of the message-hash salt
+and message hash must be fixed for any given keypair, and that they
+should be collision-resistant at the security level of the key, not
+the signature.
+
+The original versions of these optimization scripts sized the
+message-hash salt to be collision-resistant at the signature's
+security level.  Since the scripts are slow and the numbers are close
+enough to remain useful, the sizes listed below for signature security
+levels reduced below the key security level have not been updated to
+match this change.
 
 
 >>> mqdssparam.mqdss5p_minimize_sigsize(mqdssparam.mq31c1, mqdssparam.spc1)
