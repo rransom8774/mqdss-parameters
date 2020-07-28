@@ -1,4 +1,14 @@
 
+# Authors: Robert Ransom, NTRU Prime round 2 submitters
+
+# The VectorEncode function below is a copy of the Encode function
+# on page 17 of the NTRU Prime round 2 specification.
+
+# My contributions to this software are released to the public domain.
+
+# To the extent permitted by law, this software is provided WITHOUT ANY
+# WARRANTY WHATSOEVER.
+
 import math
 import functools
 import collections
