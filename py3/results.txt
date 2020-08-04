@@ -1,4 +1,28 @@
 
+>>> pqsigparam.pkpdss.pkp_seclevel_A1(251, 69, 41)
+(124.56937793861012, 123.37441033289699, {'k': 14, 'l': 21, 'r': 21})
+>>> pqsigparam.pkpdss.pkp_seclevel_A1(509, 94, 54)
+(185.7407568015199, 183.10482793009842, {'k': 18, 'l': 29, 'r': 29})
+>>> pqsigparam.pkpdss.pkp_seclevel_A1(4093, 106, 47)
+(250.87315511693976, 244.70927842651756, {'k': 18, 'l': 38, 'r': 39})
+
+>>> pqsigparam.pkpdss.pkp_seclevel_A1(977, 61, 28)
+(125.27902460019193, 124.22655597854609, {'k': 11, 'l': 22, 'r': 22})
+>>> pqsigparam.pkpdss.pkp_seclevel_A1(977, 64, 30)
+(131.94220262704414, 126.08623469014869, {'k': 11, 'l': 22, 'r': 23})
+>>> pqsigparam.pkpdss.pkp_seclevel_A1(997, 61, 28)
+(125.26869231536321, 124.22655597854609, {'k': 11, 'l': 22, 'r': 22})
+>>> pqsigparam.pkpdss.pkp_seclevel_A1(997, 64, 30)
+(131.86597098557735, 126.08623469014869, {'k': 11, 'l': 22, 'r': 23})
+>>> pqsigparam.pkpdss.pkp_seclevel_A1(1409, 87, 42)
+(189.65355180291482, 185.08480154969973, {'k': 15, 'l': 30, 'r': 30})
+>>> pqsigparam.pkpdss.pkp_seclevel_A1(1789, 111, 55)
+(250.3472700402353, 247.8022886661837, {'k': 20, 'l': 38, 'r': 38})
+>>> pqsigparam.pkpdss.pkp_seclevel_A1(1889, 111, 55)
+(249.52149347041313, 247.8022886661837, {'k': 20, 'l': 38, 'r': 38})
+
+
+
 >>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp977c1, pqsigparam.common.spc1, pqsigparam.pkpdss.fpsemiloose, pqsigparam.pkpdss.evaluate_sigsize)
 [(13710, 120, 51), (13720, 117, 52), (13730, 114, 53), (13740, 111, 54), (13750, 108, 55), (13758, 121, 51), (13768, 118, 52), (13778, 115, 53), (13788, 112, 54), (13796, 125, 50)]
 >>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp977c1, pqsigparam.common.spc1, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
@@ -60,6 +84,37 @@
 >>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp977c2, pqsigparam.common.spb80, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
 [(7563, 72, 33), (7604, 64, 36), (7605, 67, 35), (7606, 70, 34), (7607, 73, 33), (7608, 76, 32), (7609, 79, 31), (7647, 62, 37), (7648, 65, 36), (7649, 68, 35)]
 
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp1789c5, pqsigparam.common.spc5, pqsigparam.pkpdss.fpsemiloose, pqsigparam.pkpdss.evaluate_sigsize)
+[(53982, 232, 102), (54003, 229, 103), (54015, 242, 99), (54024, 226, 104), (54036, 239, 100), (54045, 223, 105), (54057, 236, 101), (54066, 220, 106), (54078, 233, 102), (54087, 217, 107)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp1789c5, pqsigparam.common.spc5, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(51942, 232, 102), (51943, 229, 103), (51944, 226, 104), (51945, 223, 105), (51946, 220, 106), (51947, 217, 107), (51948, 214, 108), (51949, 211, 109), (52035, 242, 99), (52036, 239, 100)]
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp1789c5, pqsigparam.common.spc3, pqsigparam.pkpdss.fpsemiloose, pqsigparam.pkpdss.evaluate_sigsize)
+[(36482, 183, 74), (36508, 176, 76), (36509, 187, 73), (36535, 180, 75), (36536, 191, 72), (36561, 173, 77), (36562, 184, 74), (36563, 195, 71), (36588, 177, 76), (36589, 188, 73)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp1789c5, pqsigparam.common.spc3, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(34988, 176, 76), (35002, 183, 74), (35021, 173, 77), (35035, 180, 75), (35049, 187, 73), (35054, 170, 78), (35068, 177, 76), (35082, 184, 74), (35087, 167, 79), (35096, 191, 72)]
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp1789c5, pqsigparam.common.spc1, pqsigparam.pkpdss.fpsemiloose, pqsigparam.pkpdss.evaluate_sigsize)
+[(21574, 136, 46), (21595, 132, 47), (21616, 128, 48), (21617, 141, 45), (21637, 124, 49), (21638, 137, 46), (21658, 120, 50), (21659, 133, 47), (21680, 129, 48), (21681, 142, 45)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp1789c5, pqsigparam.common.spc1, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(20654, 136, 46), (20655, 132, 47), (20656, 128, 48), (20657, 124, 49), (20658, 120, 50), (20717, 141, 45), (20718, 137, 46), (20719, 133, 47), (20720, 129, 48), (20721, 125, 49)]
+
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp1889c5, pqsigparam.common.spc5, pqsigparam.pkpdss.fpsemiloose, pqsigparam.pkpdss.evaluate_sigsize)
+[(54017, 227, 103), (54040, 224, 104), (54063, 221, 105), (54086, 218, 106), (54090, 231, 102), (54113, 228, 103), (54136, 225, 104), (54140, 238, 100), (54159, 222, 105), (54163, 235, 101)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp1889c5, pqsigparam.common.spc5, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(51957, 227, 103), (51960, 224, 104), (51963, 221, 105), (51966, 218, 106), (52050, 231, 102), (52053, 228, 103), (52056, 225, 104), (52059, 222, 105), (52062, 219, 106), (52065, 216, 107)]
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp1889c5, pqsigparam.common.spc3, pqsigparam.pkpdss.fpsemiloose, pqsigparam.pkpdss.evaluate_sigsize)
+[(36605, 179, 75), (36630, 183, 74), (36635, 172, 77), (36655, 187, 73), (36660, 176, 76), (36665, 165, 79), (36680, 191, 72), (36685, 180, 75), (36690, 169, 78), (36705, 195, 71)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp1889c5, pqsigparam.common.spc3, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(35085, 165, 79), (35095, 172, 77), (35105, 179, 75), (35120, 162, 80), (35130, 169, 78), (35140, 176, 76), (35150, 183, 74), (35165, 166, 79), (35175, 173, 77), (35185, 180, 75)]
+
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp1889c5, pqsigparam.common.spc1, pqsigparam.pkpdss.fpsemiloose, pqsigparam.pkpdss.evaluate_sigsize)
+[(21666, 136, 46), (21689, 132, 47), (21707, 141, 45), (21712, 128, 48), (21730, 137, 46), (21735, 124, 49), (21753, 133, 47), (21758, 120, 50), (21771, 142, 45), (21776, 129, 48)]
+>>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp1889c5, pqsigparam.common.spc1, pqsigparam.pkpdss.fptight, pqsigparam.pkpdss.evaluate_sigsize)
+[(20746, 136, 46), (20749, 132, 47), (20752, 128, 48), (20755, 124, 49), (20758, 120, 50), (20761, 116, 51), (20807, 141, 45), (20810, 137, 46), (20813, 133, 47), (20816, 129, 48)]
 
 
 

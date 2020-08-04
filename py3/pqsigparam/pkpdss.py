@@ -24,6 +24,7 @@ f4093 = pqsigparam.common.FieldParams(4093, 16)
 f977 = pqsigparam.common.FieldParams(977, 16)
 f997 = pqsigparam.common.FieldParams(997, 16)
 f1409 = pqsigparam.common.FieldParams(1409, 16)
+f1789 = pqsigparam.common.FieldParams(1789, 16)
 f1889 = pqsigparam.common.FieldParams(1889, 16)
 
 #class PKPKeyParams(object):
@@ -86,6 +87,7 @@ kp997c2 = PKPKeyParams(f997, 61, 28, 24, 32)
 kp997n64c2 = PKPKeyParams(f997, 64, 30, 24, 32)
 kp1409c3 = PKPKeyParams(f1409, 87, 42, 24, 48)
 kp1409c4 = PKPKeyParams(f1409, 87, 42, 32, 48)
+kp1789c5 = PKPKeyParams(f1789, 111, 55, 32, 64)
 kp1889c5 = PKPKeyParams(f1889, 111, 55, 32, 64)
 
 class PKPFormatParams(object):
@@ -122,4 +124,25 @@ def evaluate_sigsize(kp, sp, fp, r0, r1):
     rv += r  *    sp.hashbytes          # c_(1-b)    for each round   (b=ch_2)
     return rv
 
+def pkp_seclevel_step_A1(q, n, m, k, l, r):
+    assert((0 <= k) and (k <= m))
+    assert(l + r + m - k == n)
+    steps_l = math.perm(n, l)
+    memory = steps_l
+    steps_r = math.perm(n, r)
+    steps_last = math.perm(n, l+r) / (q**k)
+    time = steps_l + steps_r + steps_last
+    return (math.log2(time), math.log2(memory), dict(k=k, l=l, r=r))
+
+def pkp_seclevel_A1(q, n, m):
+    """
+    pkp_seclevel_A1(q, n, m) -> (time, memory, attack_params)
+
+    Based on the text following Algorithm 1 in eprint 2019/412.
+    The units are unclear, but both time and memory seem to be more than
+    one field element each (operation or storage cell).
+    """
+    return min(pkp_seclevel_step_A1(q, n, m, k, l, n + k - m - l)
+               for k in range(m + 1)
+               for l in range(n + k - m + 1))
 
