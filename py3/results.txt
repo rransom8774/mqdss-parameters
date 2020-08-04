@@ -21,6 +21,14 @@
 >>> pqsigparam.pkpdss.pkp_seclevel_A1(1889, 111, 55)
 (249.52149347041313, 247.8022886661837, {'k': 20, 'l': 38, 'r': 38})
 
+# from original version of ePrint 2018/714; will not be useful
+>>> pqsigparam.pkpdss.pkp_seclevel_A1(379, 51, 16)
+(123.01335744854367, 121.93636765432433, {'k': 11, 'l': 23, 'r': 23})
+>>> pqsigparam.pkpdss.pkp_seclevel_A1(521, 70, 23)
+(182.068132055803, 178.61615365025105, {'k': 15, 'l': 31, 'r': 31})
+>>> pqsigparam.pkpdss.pkp_seclevel_A1(661, 90, 33)
+(240.117924830876, 233.41623230210678, {'k': 20, 'l': 38, 'r': 39})
+
 
 
 >>> pqsigparam.common.q2_minimize_sigsize(pqsigparam.pkpdss.kp977c1, pqsigparam.common.spc1, pqsigparam.pkpdss.fpsemiloose, pqsigparam.pkpdss.evaluate_sigsize)
