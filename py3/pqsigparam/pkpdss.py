@@ -109,7 +109,8 @@ class PKPFormatParamsSemiLoose(PKPFormatParamsLoose):
     pass
 class PKPFormatParamsTight(PKPFormatParamsSemiLoose):
     def perm_bytes(self, kp):
-        return math.ceil(math.log2(math.factorial(kp.n)) / 8)
+        squished_perm_bounds = [kp.n - i for i in range(kp.n - 1)]
+        return len(VectorEncode([0]*(kp.n - 1), squished_perm_bounds))
     pass
 
 fploose = PKPFormatParamsLoose()
