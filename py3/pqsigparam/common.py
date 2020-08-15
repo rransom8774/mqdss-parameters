@@ -184,6 +184,8 @@ spb112 = SigParams(14, 28)
 spb96  = SigParams(12, 24)
 spb80  = SigParams(10, 20)
 
+spc1a = SigParams(20, 32)
+
 spb112git = SigParams(14, 20)
 
 # parameter set optimization for size, 5-pass, utility functions
