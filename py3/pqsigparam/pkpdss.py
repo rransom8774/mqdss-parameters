@@ -93,6 +93,8 @@ kp1409c4 = PKPKeyParams(f1409, 87, 42, 32, 48)
 kp1789c5 = PKPKeyParams(f1789, 111, 55, 32, 64)
 kp1889c5 = PKPKeyParams(f1889, 111, 55, 32, 64)
 
+kp977c2u = PKPKeyParams(f977, 61, 28, None, 32)
+
 class PKPFormatParams(object):
     def nvect_perm_bytes(self, kp):
         return self.nvect_bytes(kp) + self.perm_bytes(kp)
@@ -119,11 +121,16 @@ fptight = PKPFormatParamsTight()
 
 def evaluate_sigsize(kp, sp, fp, r0, r1):
     r = r0 + r1
+    seedbytes = kp.seedbytes
+    if seedbytes == None:
+        # no compression
+        seedbytes = fp.nvect_perm_bytes(kp)
+        pass
     rv  =         kp.hashbytes          # R
     rv +=         sp.hashbytes          # H(initial commitments)
     # ch_1 computed from preceding hash
     rv +=         sp.hashbytes          # ch_2
-    rv += r0 *    kp.seedbytes          # rho_0      for each round with ch_2=0
+    rv += r0 *       seedbytes          # rho_0      for each round with ch_2=0
     rv += r1 * fp.nvect_perm_bytes(kp)  # (z, sigma) for each round with ch_2=1
     rv += r  *    sp.hashbytes          # c_(1-b)    for each round   (b=ch_2)
     return rv
