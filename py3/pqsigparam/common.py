@@ -66,6 +66,8 @@ def log2diverg_sorting(n, randbits):
 # combinatorial functions
 
 def binom(n, w):
+    if (w < 0) or (w > n):
+        return 0
     return (functools.reduce(operator.mul,
                              (n - i for i in range(w)), 1) //
             math.factorial(w))
