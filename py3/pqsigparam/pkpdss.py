@@ -28,6 +28,9 @@ f1409 = pqsigparam.common.FieldParams(1409, 16)
 f1789 = pqsigparam.common.FieldParams(1789, 16)
 f1889 = pqsigparam.common.FieldParams(1889, 16)
 
+f53 = pqsigparam.common.FieldParams(53, 16)
+f59 = pqsigparam.common.FieldParams(59, 16)
+
 #class PKPKeyParams(object):
 #    __slots__ = ('field', 'n', 'm', 'seedbytes')
 #    def __init__(self, field, n, m, seedbytes):
@@ -94,6 +97,9 @@ kp1789c5 = PKPKeyParams(f1789, 111, 55, 32, 64)
 kp1889c5 = PKPKeyParams(f1889, 111, 55, 32, 64)
 
 kp977c2u = PKPKeyParams(f977, 61, 28, None, 32)
+
+kp53c5 = PKPKeyParams(f53, 53*2, 53, 32, 64)
+kp59c5 = PKPKeyParams(f59, 59*2, 59, 32, 64)
 
 class PKPFormatParams(object):
     def nvect_perm_bytes(self, kp):
